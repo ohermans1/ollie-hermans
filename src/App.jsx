@@ -1,41 +1,40 @@
 import { useEffect, useMemo, useState } from "react";
-import portraitImage from "./assets/ollie-and-maisie.webp";
 import { apps } from "./data/apps";
 
 const navItems = [
   { href: "#apps", label: "Apps" },
-  { href: "#approach", label: "Approach" },
+  { href: "#principles", label: "Principles" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" }
 ];
 
-const capabilityItems = [
+const rangeHighlights = [
   {
-    title: "Practical Product Thinking",
-    body: "Every app solves a clear merchant problem first, not just a technical challenge."
+    title: "Low Input By Design",
+    body: "Setup is intentionally short. Most stores can install, configure, and start using each app quickly."
   },
   {
-    title: "Fast Iteration Loops",
-    body: "Ship quickly, monitor how merchants use the app, then improve where it matters."
+    title: "Set And Forget Defaults",
+    body: "Core settings are pre-tuned to reduce decision fatigue and keep merchants focused on operations."
   },
   {
-    title: "Clean Shopify Execution",
-    body: "Reliable architecture, straightforward onboarding, and low-friction store integration."
+    title: "Productized, Not Bespoke",
+    body: "autoApp is a product range with shared standards, update cycles, and support paths across all apps."
   }
 ];
 
-const approachItems = [
+const principles = [
   {
-    title: "Understand The Workflow",
-    body: "Map the merchant task, conversion risk, and handoff points before building."
+    title: "Solve One Pain Point Properly",
+    body: "Each app is focused on a narrow, high-value workflow so merchants get value immediately."
   },
   {
-    title: "Build For Merchant Speed",
-    body: "Keep setup simple, remove noise, and make value obvious in the first session."
+    title: "Keep Controls Merchant Friendly",
+    body: "Clear wording, sensible defaults, and minimal setup steps keep day-to-day use straightforward."
   },
   {
-    title: "Measure Real Outcomes",
-    body: "Use ratings, adoption, and retention signals to prioritize future updates."
+    title: "Ship Improvements Continuously",
+    body: "Ratings, usage signals, and support feedback shape practical product updates over time."
   }
 ];
 
@@ -72,8 +71,8 @@ function App() {
         });
       },
       {
-        threshold: 0.2,
-        rootMargin: "0px 0px -30px 0px"
+        threshold: 0.18,
+        rootMargin: "0px 0px -36px 0px"
       }
     );
 
@@ -89,15 +88,16 @@ function App() {
 
   return (
     <div className="site-shell" id="top">
-      <div className="ambient ambient-one" aria-hidden="true" />
-      <div className="ambient ambient-two" aria-hidden="true" />
+      <div className="orb orb-one" aria-hidden="true" />
+      <div className="orb orb-two" aria-hidden="true" />
+      <div className="orb orb-three" aria-hidden="true" />
 
       <header className="top-nav">
         <a className="brand" href="#top" onClick={() => setMenuOpen(false)}>
           <span className="brand-mark">OH</span>
           <span className="brand-text">
             <strong>Ollie Hermans</strong>
-            <small>Shopify App Expert</small>
+            <small>autoApp Range</small>
           </span>
         </a>
 
@@ -123,79 +123,92 @@ function App() {
           ))}
           <a
             className="button button-small"
-            href="#contact"
+            href="#apps"
             onClick={() => setMenuOpen(false)}
           >
-            Work With Ollie
+            Browse Range
           </a>
         </nav>
       </header>
 
       <main>
-        <section className="hero-layout section">
+        <section className="hero section">
           <div className="hero-copy reveal">
-            <p className="eyebrow">Shopify App Portfolio</p>
+            <p className="eyebrow">Shopify Product Builder</p>
             <h1>
-              Modern Shopify apps designed to save time, improve SEO, and help
-              merchants scale with confidence.
+              autoApp is a range of simple Shopify apps built to be low input
+              and just work.
             </h1>
             <p className="lead">
-              I build practical Shopify apps focused on real operator workflows:
-              faster content production, stronger SEO structure, better
-              conversion support, and cleaner stock management.
+              I build and maintain my own Shopify apps under the autoApp range.
+              The focus is practical automation, clear UX, and reliable default
+              behavior for busy merchant teams.
             </p>
+            <div className="app-pill-row">
+              {apps.map((app) => (
+                <span key={app.name}>{app.name.split("|")[0].trim()}</span>
+              ))}
+            </div>
             <div className="hero-actions">
               <a className="button" href="#apps">
-                Explore The Apps
+                See The Apps
               </a>
-              <a className="button button-ghost" href="#contact">
-                Start A Conversation
+              <a className="button button-ghost" href="#principles">
+                How They Are Built
               </a>
             </div>
-            <ul className="hero-points">
-              <li>Purpose-built for merchant outcomes, not feature bloat.</li>
-              <li>Focused on automation, discoverability, and clean UX.</li>
-              <li>Backed by live App Store ratings and ongoing iteration.</li>
-            </ul>
           </div>
 
-          <aside className="hero-card reveal" style={{ "--delay": "120ms" }}>
-            <div className="hero-image-wrap">
-              <img src={portraitImage} alt="Ollie Hermans" />
+          <aside className="hero-panel reveal" style={{ "--delay": "120ms" }}>
+            <p className="hero-panel-label">autoApp Snapshot</p>
+            <h2>Focused products with a productized-only model</h2>
+            <div className="hero-metrics">
+              <article>
+                <span>Apps</span>
+                <p>{apps.length}</p>
+              </article>
+              <article>
+                <span>Reviews</span>
+                <p>{totalReviews}+</p>
+              </article>
+              <article>
+                <span>Avg. rating</span>
+                <p>{averageRating}/5</p>
+              </article>
             </div>
-            <div className="hero-card-copy">
-              <h2>Ollie Hermans</h2>
-              <p>Helping Shopify brands grow through useful app products.</p>
-            </div>
-            <div className="hero-tags">
-              <span>Shopify Apps</span>
-              <span>AI SEO</span>
-              <span>Merchant Workflows</span>
-            </div>
+            <ul className="hero-bullets">
+              <li>Built for clean onboarding and fast merchant adoption.</li>
+              <li>Designed to reduce setup friction and maintenance load.</li>
+              <li>Range-only focus with shared roadmap and support.</li>
+            </ul>
           </aside>
         </section>
 
-        <section className="section stats reveal">
+        <section className="section signal-row reveal">
           <article>
-            <p>{apps.length}</p>
-            <span>Live Shopify apps</span>
+            <strong>{apps.length}</strong>
+            <span>active apps in the range</span>
           </article>
           <article>
-            <p>{totalReviews}+</p>
-            <span>Total App Store reviews</span>
+            <strong>{totalReviews}+</strong>
+            <span>merchant reviews across products</span>
           </article>
           <article>
-            <p>{averageRating} / 5</p>
-            <span>Weighted average rating</span>
+            <strong>{averageRating}/5</strong>
+            <span>weighted average product rating</span>
+          </article>
+          <article>
+            <strong>Low Input</strong>
+            <span>setup model designed to just work</span>
           </article>
         </section>
 
-        <section className="section capabilities">
-          {capabilityItems.map((item, index) => (
+        <section className="section highlight-grid" id="range">
+          {rangeHighlights.map((item, index) => (
             <article
-              className="capability-card reveal"
+              className="highlight-card reveal"
               key={item.title}
-              style={{ "--delay": `${index * 70}ms` }}
+              style={{ "--delay": `${index * 80}ms` }}
             >
               <h3>{item.title}</h3>
               <p>{item.body}</p>
@@ -205,11 +218,11 @@ function App() {
 
         <section className="section apps-panel" id="apps">
           <header className="section-head reveal">
-            <p className="eyebrow">The App Collection</p>
-            <h2>Focused apps solving high-impact ecommerce bottlenecks</h2>
+            <p className="eyebrow">autoApp Portfolio</p>
+            <h2>Live Shopify apps designed for practical everyday outcomes</h2>
             <p>
-              Everything below is live on the Shopify App Store and built with
-              a simple goal: deliver practical value quickly for real merchants.
+              Each app below is part of the autoApp range and available on the
+              Shopify App Store.
             </p>
           </header>
 
@@ -220,7 +233,9 @@ function App() {
                 key={app.name}
                 style={{ "--delay": `${index * 70}ms` }}
               >
-                <p className="app-index">App {String(index + 1).padStart(2, "0")}</p>
+                <p className="app-index">
+                  autoApp {String(index + 1).padStart(2, "0")}
+                </p>
                 <h3>{app.name}</h3>
                 <p className="app-description">{app.description}</p>
                 <p className="app-rating">
@@ -239,15 +254,15 @@ function App() {
           </div>
         </section>
 
-        <section className="section approach" id="approach">
+        <section className="section principles" id="principles">
           <header className="section-head reveal">
-            <p className="eyebrow">How I Build</p>
-            <h2>Simple process with product discipline</h2>
+            <p className="eyebrow">Product Principles</p>
+            <h2>How autoApp products stay simple and useful</h2>
           </header>
-          <div className="approach-grid">
-            {approachItems.map((item, index) => (
+          <div className="principles-grid">
+            {principles.map((item, index) => (
               <article
-                className="approach-card reveal"
+                className="principle-card reveal"
                 key={item.title}
                 style={{ "--delay": `${index * 90}ms` }}
               >
@@ -261,35 +276,38 @@ function App() {
 
         <section className="section about" id="about">
           <article className="about-card reveal">
-            <p className="eyebrow">About Ollie</p>
-            <h2>Commerce context plus hands-on execution</h2>
+            <p className="eyebrow">About The Range</p>
+            <h2>Independent Shopify app products with a low-noise philosophy</h2>
             <p>
-              I focus on the intersection of product usability and business
-              outcome. That means app ideas are shaped by how merchants
-              actually run their stores, not by trend-driven complexity.
+              autoApp exists to give Shopify merchants dependable tools that
+              are easy to adopt and easy to keep running.
             </p>
-            <p>
-              The result is a portfolio of lean, practical apps that solve real
-              friction points and keep improving over time.
-            </p>
+            <ul className="about-list">
+              <li>Simple setup and merchant-safe defaults.</li>
+              <li>Focused scope with clear job-to-be-done per app.</li>
+              <li>Continuous product improvements from real usage feedback.</li>
+              <li>One consistent product standard across the full range.</li>
+            </ul>
           </article>
         </section>
 
         <section className="section contact" id="contact">
           <div className="contact-copy reveal">
             <p className="eyebrow">Contact</p>
-            <h2>Need a Shopify app partner that can move fast?</h2>
+            <h2>Questions, feedback, or product collaboration ideas?</h2>
             <p>
-              If you are looking to improve your store operations, SEO, or
-              conversion support with focused app products, I can help.
+              Use this form for autoApp support, feature requests, and
+              collaboration discussions.
             </p>
+            <p className="contact-note">This inbox is for the autoApp range.</p>
             <div className="contact-links">
               <a href="mailto:hello@olliehermans.com">hello@olliehermans.com</a>
-              <a href="https://www.olliehermans.com" target="_blank" rel="noreferrer">
+              <a href="https://olliehermans.com" target="_blank" rel="noreferrer">
                 olliehermans.com
               </a>
             </div>
           </div>
+
           <form
             className="contact-form reveal"
             style={{ "--delay": "100ms" }}
@@ -303,7 +321,7 @@ function App() {
             <label htmlFor="email">Email</label>
             <input id="email" name="email" type="email" required />
 
-            <label htmlFor="message">What are you building?</label>
+            <label htmlFor="message">Support request, feedback, or idea</label>
             <textarea id="message" name="message" rows="5" required />
 
             <button className="button" type="submit">
@@ -314,7 +332,7 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <p>Built for Ollie Hermans - Shopify app expert.</p>
+        <p>autoApp range by Ollie Hermans.</p>
         <a href="#top">Back to top</a>
       </footer>
     </div>
