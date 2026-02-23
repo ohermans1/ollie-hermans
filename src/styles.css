@@ -163,6 +163,10 @@ a {
   font-weight: 700;
 }
 
+.nav-links a.btn {
+  color: #ffffff;
+}
+
 .nav-links a:not(.btn) {
   position: relative;
 }
