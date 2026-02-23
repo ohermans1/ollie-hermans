@@ -124,11 +124,6 @@ function App() {
                 Contact Ollie
               </a>
             </div>
-            <div className="hero-tags">
-              <span>Shopify Ecosystem</span>
-              <span>Product Engineering</span>
-              <span>Low Input UX</span>
-            </div>
           </div>
 
           <aside className="profile-card reveal" style={{ "--delay": "120ms" }}>
@@ -148,11 +143,7 @@ function App() {
                 <strong>{averageRating}/5</strong>
               </article>
             </div>
-            <ul className="profile-list">
-              <li>Owns product direction, implementation, and release quality.</li>
-              <li>Builds for simple setup and low operational overhead.</li>
-              <li>Maintains an active roadmap with practical iteration cycles.</li>
-            </ul>
+            <p className="profile-note">I own product direction, UX decisions, engineering, and ongoing product improvements across the portfolio.</p>
           </aside>
         </section>
 
