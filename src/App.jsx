@@ -41,29 +41,23 @@ const principles = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const totalReviews = useMemo(
-    () => apps.reduce((sum, app) => sum + app.reviews, 0),
-    []
-  );
+  const totalReviews = useMemo(() => apps.reduce((sum, app) => sum + app.reviews, 0), []);
 
   const averageRating = useMemo(() => {
-    const weightedTotal = apps.reduce(
-      (sum, app) => sum + app.rating * app.reviews,
-      0
-    );
+    const weightedTotal = apps.reduce((sum, app) => sum + app.rating * app.reviews, 0);
     return (weightedTotal / totalReviews).toFixed(1);
   }, [totalReviews]);
 
   useEffect(() => {
     const nodes = document.querySelectorAll(".reveal");
     if (!("IntersectionObserver" in window)) {
-      nodes.forEach((node) => node.classList.add("is-visible"));
+      nodes.forEach(node => node.classList.add("is-visible"));
       return undefined;
     }
 
     const observer = new IntersectionObserver(
       (entries, currentObserver) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
             currentObserver.unobserve(entry.target);
@@ -76,7 +70,7 @@ function App() {
       }
     );
 
-    nodes.forEach((node) => observer.observe(node));
+    nodes.forEach(node => observer.observe(node));
     return () => observer.disconnect();
   }, []);
 
@@ -100,23 +94,13 @@ function App() {
           </span>
         </a>
 
-        <button
-          className="menu-button"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="nav-links"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
+        <button className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="nav-links" onClick={() => setMenuOpen(open => !open)}>
           Menu
         </button>
 
         <nav id="nav-links" className={`nav-links ${menuOpen ? "open" : ""}`}>
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-            >
+          {navItems.map(item => (
+            <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
               {item.label}
             </a>
           ))}
@@ -130,15 +114,8 @@ function App() {
         <section className="section hero">
           <div className="hero-main reveal">
             <p className="eyebrow">Independent Shopify Developer</p>
-            <h1>
-              I am Ollie Hermans. I build Shopify apps that are clean, practical,
-              and genuinely easy to use.
-            </h1>
-            <p className="lead">
-              My work is developer-led and product-first. I focus on creating
-              dependable apps with low setup input, clear UI, and real merchant
-              value from day one.
-            </p>
+            <h1>I am Ollie Hermans. I build Shopify apps that are clean, practical, and genuinely easy to use.</h1>
+            <p className="lead">My work is developer-led and product-first. I focus on creating dependable apps with low setup input, clear UI, and real merchant value from day one.</p>
             <div className="hero-actions">
               <a className="btn" href="#apps">
                 Explore App Portfolio
@@ -184,19 +161,14 @@ function App() {
             <p className="eyebrow">About Ollie</p>
             <h2>Developer-first execution with a strong product lens</h2>
             <p>
-              I work at the intersection of product thinking and engineering
-              detail. Instead of chasing complex feature sets, I focus on apps
-              that feel immediate, stable, and useful in daily store operations.
+              I work at the intersection of product thinking and engineering detail. Instead of chasing complex feature sets, I focus on apps that feel immediate, stable, and useful in daily store
+              operations.
             </p>
           </header>
 
           <div className="focus-grid">
             {focusAreas.map((item, index) => (
-              <article
-                className="focus-card reveal"
-                key={item.title}
-                style={{ "--delay": `${index * 80}ms` }}
-              >
+              <article className="focus-card reveal" key={item.title} style={{ "--delay": `${index * 80}ms` }}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </article>
@@ -208,24 +180,15 @@ function App() {
           <header className="section-head reveal">
             <p className="eyebrow">App Portfolio</p>
             <h2>Apps I have built for Shopify merchants</h2>
-            <p>
-              This is my current live portfolio on the Shopify App Store, with
-              merchant feedback and ratings visible for each product.
-            </p>
+            <p>This is my current live portfolio on the Shopify App Store, with merchant feedback and ratings visible for each product.</p>
           </header>
 
           <div className="apps-grid">
             {apps.map((app, index) => {
-              const [title, subtitle] = app.name
-                .split("|")
-                .map((part) => part.trim());
+              const [title, subtitle] = app.name.split("|").map(part => part.trim());
 
               return (
-                <article
-                  className="app-card reveal"
-                  key={app.name}
-                  style={{ "--delay": `${index * 70}ms` }}
-                >
+                <article className="app-card reveal" key={app.name} style={{ "--delay": `${index * 70}ms` }}>
                   <p className="app-number">App {String(index + 1).padStart(2, "0")}</p>
                   <h3>{title}</h3>
                   {subtitle && <p className="app-subtitle">{subtitle}</p>}
@@ -255,11 +218,7 @@ function App() {
 
           <div className="principles-grid">
             {principles.map((item, index) => (
-              <article
-                className="principle-card reveal"
-                key={item.title}
-                style={{ "--delay": `${index * 90}ms` }}
-              >
+              <article className="principle-card reveal" key={item.title} style={{ "--delay": `${index * 90}ms` }}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -272,24 +231,10 @@ function App() {
           <div className="contact-copy reveal">
             <p className="eyebrow">Contact</p>
             <h2>Want to talk about the apps or product direction?</h2>
-            <p>
-              Reach out for product feedback, partnership opportunities, or
-              questions about any app in the portfolio.
-            </p>
-            <div className="contact-links">
-              <a href="mailto:hello@olliehermans.com">hello@olliehermans.com</a>
-              <a href="https://olliehermans.com" target="_blank" rel="noreferrer">
-                olliehermans.com
-              </a>
-            </div>
+            <p>Reach out for product feedback, partnership opportunities, or questions about any app in the portfolio.</p>
           </div>
 
-          <form
-            className="contact-form reveal"
-            style={{ "--delay": "100ms" }}
-            action="https://formsubmit.co/81cdcc0159da5217857d1aa484cb4331"
-            method="POST"
-          >
+          <form className="contact-form reveal" style={{ "--delay": "100ms" }} action="https://formsubmit.co/81cdcc0159da5217857d1aa484cb4331" method="POST">
             <input type="hidden" name="_captcha" value="false" />
 
             <label htmlFor="name">Name</label>
