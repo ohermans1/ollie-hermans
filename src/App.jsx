@@ -225,7 +225,7 @@ function App() {
             <p>Reach out for product feedback, partnership opportunities, or questions about any app in the portfolio.</p>
           </div>
 
-          <form className="contact-form reveal" style={{ "--delay": "100ms" }} action="https://formsubmit.co/4f41ea61dd6bacb6efc5d665b3962ae7 " method="POST">
+          <form className="contact-form reveal" style={{ "--delay": "100ms" }} action="https://formsubmit.co/4f41ea61dd6bacb6efc5d665b3962ae7" method="POST">
             <input type="hidden" name="_captcha" value="false" />
 
             <label htmlFor="name">Name</label>
