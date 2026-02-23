@@ -81,14 +81,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const scriptId = "autobuy-embed-kbAkX-v2u90";
+    const scriptId = "autobuy-embed-7oGa25H9ufY";
     if (document.getElementById(scriptId)) {
       return undefined;
     }
 
     const script = document.createElement("script");
     script.id = scriptId;
-    script.src = "https://autobuy.up.railway.app/embed/kbAkX-v2u90";
+    script.src = "https://autobuy.up.railway.app/embed/7oGa25H9ufY";
     script.async = true;
     document.body.appendChild(script);
 
@@ -121,7 +121,7 @@ function App() {
               {item.label}
             </a>
           ))}
-          <div id="autobuy-button-kbAkX-v2u90" />
+          <div id="autobuy-button-7oGa25H9ufY" />
         </nav>
       </header>
 
