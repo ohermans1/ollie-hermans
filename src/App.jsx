@@ -80,23 +80,6 @@ function App() {
     return () => window.removeEventListener("hashchange", closeMenu);
   }, []);
 
-  useEffect(() => {
-    const scriptId = "autobuy-embed-7oGa25H9ufY";
-    if (document.getElementById(scriptId)) {
-      return undefined;
-    }
-
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = "https://autobuy.up.railway.app/embed/7oGa25H9ufY";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
-
   return (
     <div className="site-shell" id="top">
       <div className="halo halo-one" aria-hidden="true" />
@@ -121,7 +104,9 @@ function App() {
               {item.label}
             </a>
           ))}
-          <div id="autobuy-button-7oGa25H9ufY" />
+          <a className="btn btn-small" href="#apps" onClick={() => setMenuOpen(false)}>
+            View Apps
+          </a>
         </nav>
       </header>
 
@@ -240,7 +225,7 @@ function App() {
             <p>Reach out for product feedback, partnership opportunities, or questions about any app in the portfolio.</p>
           </div>
 
-          <form className="contact-form reveal" style={{ "--delay": "100ms" }} action="https://formsubmit.co/ollie@olltech.co.nz" method="POST">
+          <form className="contact-form reveal" style={{ "--delay": "100ms" }} action="https://formsubmit.co/4f41ea61dd6bacb6efc5d665b3962ae7 " method="POST">
             <input type="hidden" name="_captcha" value="false" />
 
             <label htmlFor="name">Name</label>
