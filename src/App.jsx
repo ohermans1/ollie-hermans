@@ -80,6 +80,23 @@ function App() {
     return () => window.removeEventListener("hashchange", closeMenu);
   }, []);
 
+  useEffect(() => {
+    const scriptId = "autobuy-embed-kbAkX-v2u90";
+    if (document.getElementById(scriptId)) {
+      return undefined;
+    }
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://autobuy.up.railway.app/embed/kbAkX-v2u90";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, []);
+
   return (
     <div className="site-shell" id="top">
       <div className="halo halo-one" aria-hidden="true" />
@@ -104,9 +121,7 @@ function App() {
               {item.label}
             </a>
           ))}
-          <a className="btn btn-small" href="#apps" onClick={() => setMenuOpen(false)}>
-            View Apps
-          </a>
+          <div id="autobuy-button-kbAkX-v2u90" />
         </nav>
       </header>
 
